@@ -1,0 +1,11 @@
+{
+    "name": "product-service",
+    "version": "1.0.0",
+    "description": "Product Service",
+    "main": "server.js",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^8.13.2",
+        "pg": "^8.7.1"
+    }
+}

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  product-service:
+    build: ./product-service
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/productDB
+  
+  order-service:
+    build: ./order-service
+    ports:
+      - "3002:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/orderDB
+
+  customer-service:
+    build: ./customer-service
+    ports:
+      - "3003:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/customerDB
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
